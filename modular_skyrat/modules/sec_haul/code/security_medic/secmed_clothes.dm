@@ -149,3 +149,14 @@
 	new /obj/item/assembly/flash/handheld(src)
 	new /obj/item/melee/baton/security/loaded(src)
 	update_appearance()
+
+//////////////////////
+//------ MISC ------//
+//////////////////////
+
+/obj/item/clothing/accessory/armband/secmed
+	name = "security medic armband"
+	desc = "An armband, worn by your local private military fixer-upper."
+	icon_state = "secmedband"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/accessories.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/accessories.dmi'
