@@ -6,7 +6,7 @@
 	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the head of security and any security sergeants"
+	supervisors = "the head of security"
 	selection_color = "#ffeeee"
 	minimal_player_age = 7
 	exp_requirements = 120
@@ -54,9 +54,9 @@
 	jobtype = /datum/job/security_medic
 
 	belt = /obj/item/pda/security
-	ears = /obj/item/radio/headset/headset_medsec
-	uniform = /obj/item/clothing/under/rank/security/peacekeeper/security_medic
-	gloves = /obj/item/clothing/gloves/color/latex/nitrile
+	ears = /obj/item/radio/headset/headset_medsec/alt
+	uniform = /obj/item/clothing/under/rank/security/peacekeeper/security_medic/scrubs
+	gloves = /obj/item/clothing/gloves/color/latex/nitrile/sec
 	shoes = /obj/item/clothing/shoes/jackboots
 	glasses = /obj/item/clothing/glasses/hud/health/sunglasses
 	suit = /obj/item/clothing/suit/armor/vest/peacekeeper/security_medic
@@ -89,21 +89,30 @@
 	icon_state = "sec_headset"
 	keyslot = new /obj/item/encryptionkey/headset_medsec
 
+/obj/item/radio/headset/headset_medsec/alt
+	name = "medical-security bowman headset"
+	desc = "Used to hear how many security officers need to be stiched back together. Protects ears from flashbangs."
+	icon_state = "sec_headset"
+	keyslot = new /obj/item/encryptionkey/headset_medsec
+
+/obj/item/radio/headset/headset_medsec/alt/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_EARS))
+
 /obj/structure/closet/secure_closet/security_medic
-	name = "security medics's locker"
+	name = "security medic's locker"
 	req_access = list(ACCESS_SECURITY)
 	icon = 'modular_skyrat/modules/sec_haul/icons/lockers/closet.dmi'
 	icon_state = "secmed"
 
 /obj/structure/closet/secure_closet/security_medic/PopulateContents()
 	..()
+	new /obj/item/storage/belt/security/medic/full(src)
+	new /obj/item/clothing/under/rank/security/peacekeeper/security_medic(src)
 	new /obj/item/clothing/suit/toggle/labcoat/security_medic(src)
-	new /obj/item/clothing/suit/hazardvest/security_medic(src)
+	new /obj/item/healthanalyzer(src)
 	new /obj/item/clothing/head/helmet/sec/peacekeeper/security_medic(src)
-	new /obj/item/clothing/under/rank/security/peacekeeper/tactical(src)
 	new /obj/item/radio/headset/headset_medsec(src)
-	new /obj/item/storage/firstaid/emergency(src)
 	new /obj/item/clothing/suit/straight_jacket(src)
-	new /obj/item/storage/belt/medical(src)
-	new /obj/item/storage/belt/security/full(src)
-	new /obj/item/clothing/under/rank/medical/doctor/red(src)
+	new /obj/item/storage/firstaid(src)
+

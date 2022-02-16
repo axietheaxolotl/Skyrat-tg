@@ -141,3 +141,11 @@
 		/obj/item/shears,
 		/obj/item/stack/sticky_tape //surgical tape
 		))
+
+/obj/item/storage/belt/security/medic/full/PopulateContents()
+	new /obj/item/reagent_containers/spray/pepper(src)
+	new /obj/item/restraints/handcuffs(src)
+	new /obj/item/grenade/flashbang(src)
+	new /obj/item/assembly/flash/handheld(src)
+	new /obj/item/melee/baton/security/loaded(src)
+	update_appearance()
